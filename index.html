@@ -37,6 +37,17 @@ button {
   transition: 0.3s;
 }
 
+.bigBtn {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 30px;
+  background: white;
+  color: #ff4b5c;
+  border: none;
+  cursor: pointer;
+}
+
 button:hover {
   background: #ff4b5c;
   color: white;
@@ -102,13 +113,40 @@ button:hover {
 
   <h1>💖 You made it 💖</h1>
 
-  <!-- BIGGEST IMAGE -->
   <img src="Tanii_2.jpeg" style="width:550px; height:auto; margin-top:20px;">
 
   <p style="margin-top:20px;">
     No matter what answer you choose, <br>
     you’re always the best part of my life ❤️
   </p>
+
+  <!-- Hidden Gift Button -->
+  <button id="giftBtn" class="hidden" onclick="showGifts()">
+    What gift do you want? 🎁
+  </button>
+
+</div>
+
+<!-- 🎁 GIFT OPTIONS -->
+<div id="giftPage" class="container hidden">
+
+  <h2>Choose your gift 😏</h2>
+
+  <button class="bigBtn" onclick="finalGift()">Dubai Kunafa Chocolate 🍫</button><br>
+  <button class="bigBtn" onclick="finalGift()">Anklet ✨</button><br>
+  <button class="bigBtn" onclick="finalGift()">Customized Pen 🖊️</button>
+
+</div>
+
+<!-- 💝 FINAL MESSAGE -->
+<div id="lastPage" class="container hidden">
+
+  <h2 id="giftMessage">You deserve all the above gifts ❤️</h2>
+
+  <!-- Images (hidden initially) -->
+  <img id="gift1" src="kunafa.jpeg" class="hidden" style="width:200px;">
+  <img id="gift2" src="anklet.jpeg" class="hidden" style="width:200px;">
+  <img id="gift3" src="pen.jpeg" class="hidden" style="width:200px;">
 
 </div>
 
@@ -131,6 +169,34 @@ function goToFinal() {
   document.getElementById("wrongPage").style.display = "none";
   document.getElementById("page2").style.display = "none";
   document.getElementById("finalPage").style.display = "block";
+
+  // ✅ Start timer AFTER reaching final page
+  setTimeout(() => {
+    document.getElementById("giftBtn").style.display = "inline-block";
+  }, 5000);
+}
+
+function showGifts() {
+  document.getElementById("finalPage").style.display = "none";
+  document.getElementById("giftPage").style.display = "block";
+}
+
+function finalGift() {
+  document.getElementById("giftPage").style.display = "none";
+  document.getElementById("lastPage").style.display = "block";
+
+  // Show images one by one
+  setTimeout(() => {
+    document.getElementById("gift1").style.display = "block";
+  }, 100);
+
+  setTimeout(() => {
+    document.getElementById("gift2").style.display = "block";
+  }, 200);
+
+  setTimeout(() => {
+    document.getElementById("gift3").style.display = "block";
+  }, 300);
 }
 </script>
 
