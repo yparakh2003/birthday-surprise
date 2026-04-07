@@ -1,66 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For Someone Special ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      color: #fff;
-    }
+<meta charset="UTF-8">
+<title>For You ❤️</title>
 
-    .container {
-      margin-top: 10%;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: white;
+}
 
-    h1 {
-      font-size: 3em;
-      animation: fadeIn 2s ease-in-out;
-    }
+.container {
+  margin-top: 10%;
+}
 
-    img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      margin-top: 20px;
-      border: 5px solid white;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      animation: pop 1.5s ease;
-    }
+img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 5px solid white;
+  margin-top: 20px;
+}
 
-    p {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  color: #ff4b5c;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
+button:hover {
+  background: #ff4b5c;
+  color: white;
+}
 
-    @keyframes pop {
-      from {transform: scale(0);}
-      to {transform: scale(1);}
-    }
-  </style>
+.hidden {
+  display: none;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>Happy Birthday Tanii ❤️</h1>
+<!-- 🎉 PAGE 1 -->
+<div id="page1" class="container">
+  <h1>Happy Birthday My Love ❤️</h1>
+  <img src="Tanii_1.jpeg">
+  <p>You make my world brighter every day ✨</p>
 
-    <!-- Replace with her image -->
-    <img src="Tanii_1.jpeg" alt="Her Image">
+  <button onclick="startJourney()">Start Journey 💫</button>
+</div>
 
-    <p>
-      You make my world brighter every day ✨ <br>
-      I’m so lucky to have you 💕
-    </p>
-  </div>
+<!-- ❓ PAGE 2 -->
+<div id="page2" class="container hidden">
+  <h2>Answer this to continue 😏</h2>
+  <p><b>Which one is bigger?</b></p>
+
+  <button onclick="correctAnswer()">Infinite</button><br>
+  <button onclick="wrongAnswer()">Infinitesimal</button>
+</div>
+
+<!-- 😂 WRONG PAGE -->
+<div id="wrongPage" class="container hidden">
+  <h2>😂 Haha dumb!</h2>
+  <p>But anyways… you still deserve to continue ❤️</p>
+
+  <button onclick="goToFinal()">Continue</button>
+</div>
+
+<!-- ❤️ FINAL PAGE -->
+<div id="finalPage" class="container hidden">
+  <h1>💖 You made it 💖</h1>
+  <p>
+    No matter what answer you choose, <br>
+    you’re always the best part of my life ❤️
+  </p>
+</div>
+
+<script>
+function startJourney() {
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "block";
+}
+
+function correctAnswer() {
+  goToFinal();
+}
+
+function wrongAnswer() {
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("wrongPage").style.display = "block";
+}
+
+function goToFinal() {
+  document.getElementById("wrongPage").style.display = "none";
+  document.getElementById("page2").style.display = "none";
+  document.getElementById("finalPage").style.display = "block";
+}
+</script>
 
 </body>
 </html>
