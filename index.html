@@ -60,11 +60,13 @@ button:hover {
 </head>
 
 <body>
-
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 <!-- 🎉 PAGE 1 -->
 <div id="page1" class="container">
   <h1>Happy Birthday My Love ❤️</h1>
-  <img src="Tanii_1.jpeg">
+  <img src="Tanii_1.jpeg" style="width:300px; height:auto;">
   <p>You make my world brighter every day ✨</p>
 
   <button onclick="startJourney()">Start Journey 💫</button>
@@ -154,10 +156,63 @@ button:hover {
 
 </div>
 
+
+  <!-- 🔐 PASSWORD PAGE -->
+<div id="passwordPage" class="container hidden">
+
+  <h1>Who is more intelligent? 🤔</h1>
+
+  <button class="bigBtn" onclick="wrongChoice()">Tania Chatterjee</button><br>
+  <button class="bigBtn" onclick="correctChoice()">Yash Parakh</button>
+
+  <p id="errorMsg" class="hidden" style="color:yellow; font-size:20px; margin-top:20px;">
+    ❌ Error, Please try again
+  </p>
+
+</div>
+
+
+<!-- 🎉 CORRECT PAGE -->
+<div id="correctPage" class="container hidden">
+
+  <h1>🎉 Congratulations, correct answer 🎉</h1>
+
+  <img src="Tanii_6.jpeg" style="width:500px; height:auto; margin-top:20px;">
+
+  <button onclick="endJourney()">End Journey</button>
+
+</div>
+
+
+<!-- 🏁 END PAGE -->
+<div id="endPage" class="container hidden">
+
+  <h1 style=" 
+  font-size:36px;
+  max-width:900px;
+  margin: 100px auto;
+  text-align:center;
+  line-height:1.5;
+">
+    Happy Birthday, May you find all the happiness in your life and give your parents and your country a reason to be proud of you ❤️
+  </h1>
+
+  <div style="display:flex; justify-content:center; gap:30px; margin-top:30px;">
+    <img src="Tanii_7.jpeg" style="width:250px; height:auto;">
+    <img src="Tanii_8.jpeg" style="width:250px; height:auto;">
+    <img src="Tanii_9.jpeg" style="width:250px; height:auto;">
+  </div>
+
+</div>
+
 <script>
 function startJourney() {
   document.getElementById("page1").style.display = "none";
   document.getElementById("page2").style.display = "block";
+
+  // 🎵 Start music
+  let music = document.getElementById("bgMusic");
+  music.play();
 }
 
 function correctAnswer() {
@@ -184,23 +239,63 @@ function showGifts() {
   document.getElementById("finalPage").style.display = "none";
   document.getElementById("giftPage").style.display = "block";
 }
-
 function finalGift() {
   document.getElementById("giftPage").style.display = "none";
   document.getElementById("lastPage").style.display = "block";
 
-  // Show images one by one
   setTimeout(() => {
-  document.getElementById("gift1").style.display = "block";
-}, 1000);
+    document.getElementById("gift1").style.display = "block";
+  }, 1000);
 
-setTimeout(() => {
-  document.getElementById("gift2").style.display = "block";
-}, 2000);
+  setTimeout(() => {
+    document.getElementById("gift2").style.display = "block";
+  }, 2000);
 
-setTimeout(() => {
-  document.getElementById("gift3").style.display = "block";
-}, 3000);
+  setTimeout(() => {
+    document.getElementById("gift3").style.display = "block";
+  }, 3000);
+
+  // 👇 ADD THIS
+  setTimeout(() => {
+    if (!document.getElementById("unlockBtn")) {
+  let btn = document.createElement("button");
+  btn.innerText = "Unlock next page 🔓";
+  btn.id = "unlockBtn";
+  btn.onclick = goToPassword;
+  document.getElementById("lastPage").appendChild(btn);
+}
+  }, 3000);
+}
+
+ 
+
+  function goToPassword() {
+  document.getElementById("lastPage").style.display = "none";
+  document.getElementById("passwordPage").style.display = "block";
+}
+
+function wrongChoice() {
+  let msg = document.getElementById("errorMsg");
+  msg.style.display = "block";
+
+  // vibration effect
+  document.body.style.transform = "translateX(10px)";
+  setTimeout(() => {
+    document.body.style.transform = "translateX(-10px)";
+  }, 100);
+  setTimeout(() => {
+    document.body.style.transform = "translateX(0px)";
+  }, 200);
+}
+
+function correctChoice() {
+  document.getElementById("passwordPage").style.display = "none";
+  document.getElementById("correctPage").style.display = "block";
+}
+
+function endJourney() {
+  document.getElementById("correctPage").style.display = "none";
+  document.getElementById("endPage").style.display = "block";
 }
 </script>
 
